@@ -27,7 +27,7 @@ namespace EHPerf {
         private async void SpawnBatch(object source, ElapsedEventArgs args) {
 
             if (batchPool.Count >= 10) return;
-
+            await Console.Out.WriteLineAsync("Spawning...");
             batchPool.Enqueue(await client.CreateBatchAsync(new CreateBatchOptions {
                 PartitionId = partitionKey,
                 MaximumSizeInBytes = maxBatchSize

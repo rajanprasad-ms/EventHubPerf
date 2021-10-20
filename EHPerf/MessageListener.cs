@@ -25,7 +25,7 @@ namespace EHPerf {
             consumerEventHubsConnectionString = ehEndpoint;
             consumerEventHubName = ehname;
             consumerGroup = "$Default";
-            consumerWakeUpPeriod = 1000000;
+            consumerWakeUpPeriod = 1000;
             partitionEventCount = new ConcurrentDictionary<string, int>();
         }
        
