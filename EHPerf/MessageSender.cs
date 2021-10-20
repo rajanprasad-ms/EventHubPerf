@@ -31,7 +31,7 @@ namespace EHPerf {
             }
         }
 
-        public async Task DoSend()
+        public void DoSend()
         {
 
             EventData data = new EventData(new BinaryData(new byte[10000]));
@@ -44,6 +44,7 @@ namespace EHPerf {
                     {
                         await Console.Error.WriteLineAsync($@"Error dequeing from pool.");
                         await Task.Delay(maxTimerInterval);
+                        continue;
                     }
                     batch.TryAdd(data);
                     var success = false;

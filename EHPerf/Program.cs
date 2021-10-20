@@ -17,7 +17,8 @@ namespace EHPerf {
             if (send)
             {
                 MessageSender sender = new MessageSender(ehpoint, ehname, 1, source.Token);
-                await sender.DoSend();
+
+                sender.DoSend();
             }
             else
             {
