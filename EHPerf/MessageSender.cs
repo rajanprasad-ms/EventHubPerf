@@ -25,12 +25,6 @@ namespace EHPerf {
 
         
 
-        public void Drain(EventDataBatch batch) {
-            lock (publishQ) {
-                publishQ.Enqueue(batch);
-            }
-        }
-
         public void DoSend()
         {
 
@@ -67,7 +61,6 @@ namespace EHPerf {
         private readonly EventHubProducerClient mEventHubClient;
         private readonly int maxTimerInterval;
         private readonly CancellationToken cancellation;
-        private readonly Queue<EventDataBatch> publishQ = new (100);
         private readonly List<BatchPool> batchPools = new (1000);
 
     }

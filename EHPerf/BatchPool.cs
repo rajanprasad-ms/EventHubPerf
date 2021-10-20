@@ -10,7 +10,7 @@ namespace EHPerf {
             this.partitionKey = partitionKey;
             this.maxBatchSize = maxBatchSize;
             this.client = client;
-            batchSpawnTimer = new Timer(1);
+            batchSpawnTimer = new Timer(100);
             batchSpawnTimer.Elapsed += SpawnBatch;
         }
 
@@ -26,7 +26,7 @@ namespace EHPerf {
 
         private async void SpawnBatch(object source, ElapsedEventArgs args) {
 
-            if (batchPool.Count >= 100) return;
+            if (batchPool.Count >= 10) return;
 
             batchPool.Enqueue(await client.CreateBatchAsync(new CreateBatchOptions {
                 PartitionId = partitionKey,
