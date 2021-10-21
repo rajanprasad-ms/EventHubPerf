@@ -104,7 +104,7 @@ namespace EHPerf {
             try {
                 if (args.CancellationToken.IsCancellationRequested)
                     return;
-                
+                Thread.Sleep(1000);                
                 var partition = args.Partition.PartitionId;
                 if (checkPointInterval < 0) return;
                 
