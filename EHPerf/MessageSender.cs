@@ -33,6 +33,8 @@ namespace EHPerf {
             Parallel.For(0, 1000, (i) =>{
                     while (!cancellation.IsCancellationRequested) {
                         //                    EventDataBatch batch = batchPools[i].Retrieve();
+                        if(i > 0) i = 0;
+                        if(i >= 1000) i = 999;
                         var batchTask = mEventHubClient.CreateBatchAsync();
                         batchTask.AsTask().Wait();
                         var batch = batchTask.Result;
